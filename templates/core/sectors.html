@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+
+<section class="bg">
+    <div class="w3-container">
+        <h1 class="w3-center w3-animate-top">Sectors Page</h1>
+        <br><br>
+        <p class="w3-center w3-animate-bottom" style="font-size: 1.2rem; text-align: center;">
+            🚧👷‍♀️ Page Under Construction 👷‍♂️🚧<br>
+            We're building something awesome — stay tuned! 🔧✨
+        </p> 
+    </div>
+    
+    <br>
+
+    <div class="container d-flex flex-column align-items-center my-5">
+        <h2 class="mb-4 text-center">Explore Sectors</h2>
+        <div class="row">
+            {% for sector in sectors %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100 border-0" style="max-width: 100%;">
+    
+                    {% if sector.logo %}
+                    <img src="{{ sector.logo.url }}" class="card-img-top p-3 mx-auto" alt="{{ sector.name }}"
+                         style="width: 120px; height: 120px; object-fit: contain; border-radius: 10px;">
+                    {% else %}
+                    <img src="{% static 'images/default-sector.png' %}" class="card-img-top p-3 mx-auto" alt="No logo"
+                         style="width: 120px; height: 120px; object-fit: contain; border-radius: 10px;">
+                    {% endif %}
+    
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-2">{{ sector.name }}</h5>
+                        <p class="card-text small text-muted mb-3">Startups in the {{ sector.name }} sector.</p>
+                        <a href="{% url 'startups_by_sector' sector.slug %}" class="btn btn-sm btn-outline-primary">View Startups</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+<!-- footer -->
+{% include "includes/footer.html" %}
+</section>
+
+
+{% endblock content %}
+

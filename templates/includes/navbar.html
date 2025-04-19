@@ -1,0 +1,43 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg "> <!-- bg-body-tertiary -->
+    <div class="container"> <!-- -fluid -->
+         <!-- Brand -->
+        <a class="navbar-brand" href="{% url 'home' %}"> <!--  fw-bold text-dark -->
+            <!-- <img src="{% static 'images/logo.png' %}" alt="LaunchPad Africa Logo" width="30" height="30" class="d-inline-block align-text-top"> -->
+            LaunchPad Africa.
+        </a>
+
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Nav Items -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto my-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == '/' %}active-link{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == '/startups/' %}active-link{% endif %}" href="{% url 'startups' %}">Startups</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == '/sectors/' %}active-link{% endif %}" href="{% url 'sectors' %}">Sectors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == '/about/' %}active-link{% endif %}" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == '/contact/' %}active-link{% endif %}" href="{% url 'contact' %}">Contact</a>
+            </li>
+            </ul>
+
+            <!--Search form -->
+            <form method="get" action="{% url 'startup_search' %}">
+            <input class="px-2 search" type="text" name="q" placeholder="Search by Startups..." value="">
+            <button class="btn0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+  </nav>
