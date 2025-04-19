@@ -31,7 +31,19 @@ SECRET_KEY = "django-insecure-e77x1rs!lk$)xovfb5*an=^82vt4v62fyx3%*yvao)-5$n3&v=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'launchpad-africa.onrender.com',
+]
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://launchpad-africa.onrender.com',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+]
+
 
 
 # Application definition
