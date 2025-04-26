@@ -4,7 +4,10 @@ from django.db.models import Q
 
 
 def home(request):
-    return render(request, "core/home.html")
+    context={
+        'is_landing': True,
+    }
+    return render(request, "core/home.html", context)
 
 def startup_list_view(request):
     startups = Startup.objects.all()

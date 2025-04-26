@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="icon" href="{% static 'images/icon/LaunchPad Africa Logo.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/icon/icon1.png' %}" type="image/x-icon">
 
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -34,7 +34,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 
 </head>
-<body>
+<body class="{% if is_landing %}landing-page{% endif %}">
 
     <!-- navbar -->
     {% include "includes/navbar.html" %}
@@ -43,6 +43,7 @@
     <!-- load content-->
     {% endblock content %}
 
-    
+    <!-- Your custom JS -->
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
