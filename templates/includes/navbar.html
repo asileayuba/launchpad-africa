@@ -4,14 +4,16 @@
     <div class="container"> <!-- -fluid -->
          <!-- Brand -->
         <a class="navbar-brand" href="{% url 'home' %}"> <!--  fw-bold text-dark -->
-            {% comment %} <img src="{% static 'images/icon/icon1.png' %}" alt="LaunchPad Africa Logo" width="30" height="30" class="d-inline-block align-text-top"> {% endcomment %}
-            LaunchPad Africa.
+            <img src="{% static 'images/icon/navbar.png' %}" alt="LaunchPad Africa Logo" width="80" height="80" class="d-inline-block align-text-top">
+            {% comment %} LaunchPad Africa. {% endcomment %}
         </a>
 
         <!-- Toggler -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="navbarToggler">
             <span class="navbar-toggler-icon"></span>
         </button>
+
 
         <!-- Nav Items -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

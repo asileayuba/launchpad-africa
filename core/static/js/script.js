@@ -11,3 +11,23 @@ document.addEventListener("click", function (event) {
       }
     }
 });
+
+
+// Script to dynamically change the navbar toggler icon:
+// When the navbar is expanded (opened), it shows a "times (X)" icon.
+// When the navbar is collapsed (closed), it shows the default hamburger icon.
+
+document.addEventListener("DOMContentLoaded", function() {
+    const toggler = document.getElementById("navbarToggler");
+    const navbarCollapse = document.getElementById("navbarSupportedContent");
+
+    navbarCollapse.addEventListener('shown.bs.collapse', function () {
+        // Navbar is expanded
+        toggler.innerHTML = '<i class="fas fa-times text-white" style="font-size: 24px;"></i>'; // FontAwesome "X" icon
+    });
+
+    navbarCollapse.addEventListener('hidden.bs.collapse', function () {
+        // Navbar is collapsed
+        toggler.innerHTML = '<span class="navbar-toggler-icon"></span>'; // Restore default hamburger
+    });
+});
