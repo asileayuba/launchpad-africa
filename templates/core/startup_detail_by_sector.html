@@ -5,20 +5,20 @@
 {% block content %}
 <section class="bg" style="min-height: 100vh; padding-top: 60px;">
     <!-- Container for main content -->
-    <div class="container d-flex flex-column align-items-center my-5">
+    <div class="container d-flex flex-column align-items-center">
         <div style="max-width: 800px; margin: 0 auto;">
             <div class="row g-0">
                 <div class="col-md-4 d-flex align-items-center justify-content-center p-3">
                     <img src="{{ startup.logo.url }}" alt="{{ startup.name }}"
-                         class="img-fluid rounded" style="max-height: 200px; object-fit: contain;">
+                         class="img-fluid rounded" style="max-height: 500px; object-fit: contain;">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h3 class="card-title">{{ startup.name }}</h3>
-                        <p class="card-text">{{ startup.description }}</p>
+                        <h3 class="card-title"><b>{{ startup.name }}</b></h3>
+                        <p class="card-text" style="text-align: justify;">{{ startup.description }}</p>
                         <p class="card-text"><strong>Sector:</strong> {{ startup.sectors.name }}</p>
                         <p class="card-text"><strong>Founded:</strong> {{ startup.founding_date }}</p>
-                        <a href="{% url 'startups' %}" class="btn btn-secondary btn-sm mt-3">← Back to Startups</a>
+                        <a href="{% url 'startups' %}" class="btn btn-secondary btn-sm mt-3 mb-5">← Back to Startups</a>
                     </div>
                 </div>
             </div>

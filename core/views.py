@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Sector, Startup
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 
 def home(request):
@@ -11,18 +12,28 @@ def home(request):
 
 def startup_list_view(request):
     startups = Startup.objects.all()
+    paginator = Paginator(startups, 6)
+    
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     
     context = {
         'startups': startups,
+        'page_obj': page_obj,
     }
     return render(request, "core/startups.html", context)
 
 
 def sector_list_view(request):
     sectors = Sector.objects.all()
+    paginator = Paginator(sectors, 6)
+    
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     
     context = {
         'sectors': sectors,
+        'page_obj': page_obj,
     }
     return render(request, "core/sectors.html", context)
 
@@ -61,9 +72,14 @@ def startup_detail_view(request, sector_slug, pk):
 def startups_by_sector_view(request, sector_slug):
     sector = get_object_or_404(Sector, slug=sector_slug)
     startups = Startup.objects.filter(sectors=sector)
+    paginator = Paginator(startups, 6)
+    
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     
     context = {
         'sector': sector,
-        'startups': startups
+        'startups': startups,
+        'page_obj': page_obj,
     }
     return render(request, 'core/startups_by_sector.html', context)

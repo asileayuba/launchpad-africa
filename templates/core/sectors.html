@@ -1,51 +1,73 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block content %}
-
-
 <section class="bg">
     <div class="w3-container">
-        <h1 class="w3-center w3-animate-top">Sectors Page</h1>
-        <br><br>
-        <p class="w3-center w3-animate-bottom" style="font-size: 1.2rem; text-align: center;">
-            🚧👷‍♀️ Page Under Construction 👷‍♂️🚧<br>
-            We're building something awesome — stay tuned! 🔧✨
-        </p> 
-    </div>
-    
-    <br>
+        <div class="container d-flex flex-column align-items-center my-5">
+            <h2 class="mb-4 text-center">Explore Sectors</h2>
+            <div class="row">
 
-    <div class="container d-flex flex-column align-items-center my-5">
-        <h2 class="mb-4 text-center">Explore Sectors</h2>
-        <div class="row">
-            {% for sector in sectors %}
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm h-100 border-0" style="max-width: 100%;">
-    
-                    {% if sector.logo %}
-                    <img src="{{ sector.logo.url }}" class="card-img-top p-3 mx-auto" alt="{{ sector.name }}"
-                         style="width: 120px; height: 120px; object-fit: contain; border-radius: 10px;">
-                    {% else %}
-                    <img src="{% static 'images/default-sector.png' %}" class="card-img-top p-3 mx-auto" alt="No logo"
-                         style="width: 120px; height: 120px; object-fit: contain; border-radius: 10px;">
-                    {% endif %}
-    
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-2">{{ sector.name }}</h5>
-                        <p class="card-text small text-muted mb-3">Startups in the {{ sector.name }} sector.</p>
-                        <a href="{% url 'startups_by_sector' sector.slug %}" class="btn btn-sm btn-outline-primary">View Startups</a>
+                {% for sector in page_obj %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100 border-0" style="max-width: 100%;">
+        
+                        {% if sector.logo %}
+                        <img src="{{ sector.logo.url }}" class="card-img-top p-3 mx-auto" alt="{{ sector.name }}"
+                            style="width: 120px; height: 120px; object-fit: contain; border-radius: 10px;">
+                        {% else %}
+                        <img src="{% static 'images/default-sector.png' %}" class="card-img-top p-3 mx-auto" alt="No logo"
+                            style="width: 120px; height: 120px; object-fit: contain; border-radius: 10px;">
+                        {% endif %}
+        
+                        <div class="card-body text-center">
+                            <h5 class="card-title mb-2">{{ sector.name }}</h5>
+                            <p class="card-text small text-muted mb-3">Startups in the {{ sector.name }} sector.</p>
+                            <a href="{% url 'startups_by_sector' sector.slug %}" class="btn btn-sm btn-outline-primary">View Startups</a>
+                        </div>
                     </div>
                 </div>
+                {% empty %}
+                <p class="text-muted text-center">No sectors available.</p>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
-<!-- footer -->
-{% include "includes/footer.html" %}
+
+    <!-- Pagination -->
+    {% if page_obj.has_other_pages %}
+    <div class="d-flex justify-content-center mt-4">
+        <nav aria-label="Sector pagination">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">« Prev</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled"><span class="page-link">« Prev</span></li>
+                {% endif %}
+
+                {% for num in paginator.page_range %}
+                    {% if num == page_obj.number %}
+                    <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next »</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled"><span class="page-link">Next »</span></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    {% endif %}
 </section>
 
-
+<!-- footer -->
+{% include "includes/footer.html" %}
 {% endblock content %}
-
