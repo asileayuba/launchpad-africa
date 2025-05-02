@@ -3,8 +3,8 @@
 
 {% block content %}
 <section class="bg" style="min-height: 100vh; padding-top: 60px;">
-    <div class="container d-flex flex-column align-items-center my-5">
-        <h2 class="text-center mb-4">🔍 Search Startups</h2>
+    <div class="container d-flex flex-column align-items-center">
+        <h2 class="text-center">🔍 Search Startups</h2>
 
         {% if query %}
             <h5 class="mb-4">Results for "<strong>{{ query }}</strong>":</h5>
@@ -15,7 +15,7 @@
                     <div class="col-md-4 mb-4">
                         <div class="card shadow-sm h-100 border-0">
                             <img src="{{ startup.logo.url }}" class="card-img-top p-3 mx-auto" alt="{{ startup.name }}"
-                                 style="width: 120px; height: 120px; object-fit: contain; border-radius: 10px;">
+                                style="width: 120px; height: 120px; object-fit: contain; border-radius: 10px;">
 
                             <div class="card-body text-center">
                                 <h5 class="card-title mb-2">{{ startup.name }}</h5>
@@ -29,9 +29,14 @@
                     </div>
                     {% endfor %}
                 </div>
+
+                <!-- Pagination -->
+                {% include "includes/pagination.html" %}
+                
             {% else %}
                 <p class="text-muted">No startups matched your search.</p>
-            {% endif %}
+            {% endif %}  
+
         {% else %}
             <p class="text-muted">Enter a keyword to search for startups.</p>
         {% endif %}

@@ -54,16 +54,26 @@ def about(request):
 def search_startups_view(request):
     query = request.GET.get('q')
     results = []
-    
+
     if query:
-        results = Startup.objects.filter(
-            Q(name__icontains=query) | 
-            Q(description__icontains=query) | 
-            Q(sectors__name__icontains=query))
-        
+        all_results = Startup.objects.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query) |
+            Q(sectors__name__icontains=query)
+        ).distinct()
+
+        paginator = Paginator(all_results, 6)  # 6 results per page
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        results = page_obj
+    else:
+        page_obj = None
+
     context = {
         "query": query,
         "results": results,
+        "page_obj": page_obj,
     }
     return render(request, 'core/startup_search.html', context)
 
