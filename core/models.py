@@ -3,7 +3,7 @@ from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
 
 
-
+# Sector Model
 class Sector(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
@@ -18,13 +18,26 @@ class Sector(models.Model):
         return self.name
     
     
-
+# Startup Model 
 class Startup(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
     founding_date = models.DateField()
     logo = CloudinaryField('logo', null=True, blank=True)
     sectors = models.ForeignKey(Sector, on_delete=models.CASCADE)
+    website = models.URLField(null=True, blank=True)
+    location = models.CharField(max_length=255, null=True, blank=True)
+
+    
+    def __str__(self):
+        return self.name
+
+# Investors Model
+class Investor(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField(unique=True)
+    investment_type = models.CharField(max_length=100)
+    country = models.CharField(max_length=100, null=True, blank=True)
     
     def __str__(self):
         return self.name

@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Sector, Startup
+from .models import Sector, Startup, Investor
 from django.db.models import Q
 from django.core.paginator import Paginator
+
 
 
 def home(request):
@@ -37,11 +38,17 @@ def sector_list_view(request):
     }
     return render(request, "core/sectors.html", context)
 
+def investor(request):
+    investor = Investor.objects.all()
+    
+    context = {
+        'investor': investor,
+    }
+    return render(request, "core/investor.html", context)
+
 def about(request):
     return render(request, "core/about.html")
 
-def contact(request):
-    return render(request, "core/contact.html")
 
 # Search bar / button
 def search_startups_view(request):

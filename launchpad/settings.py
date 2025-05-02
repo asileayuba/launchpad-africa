@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-
+from django.templatetags.static import static
 import os
 from pathlib import Path
 from dotenv import load_dotenv
@@ -49,6 +49,8 @@ CSRF_TRUSTED_ORIGINS = [
 # Application definition
 
 INSTALLED_APPS = [
+    "unfold",
+    "unfold.contrib.import_export",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -56,6 +58,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "core",
+    "import_export",
     "fontawesomefree",
     "cloudinary_storage",
     "cloudinary",
@@ -181,3 +184,12 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+UNFOLD = {
+    "SITE_HEADER": "LaunchPad Africa",
+    "SITE_ICON": {
+        "light": lambda request: static("images/icon/navbar.png"),  # light mode
+        "dark": lambda request: static("images/icon/navbar.png"),  # dark mode
+    }
+}
