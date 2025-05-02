@@ -342,7 +342,7 @@ color: black !important;
 
 .text {
     color: rgb(164, 85, 0);
-    font-size: 30px;
+    font-size: 50px;
     word-wrap: break-word;
     white-space: nowrap;
     overflow: hidden;
@@ -353,14 +353,14 @@ color: black !important;
   /* Responsive: Adjust font size for smaller screens */
 @media (max-width: 768px) {
     .text {
-      font-size: 24px;
+      font-size: 30px;
       white-space: normal; /* Allow wrapping on small screens */
     }
   }
   
   @media (max-width: 480px) {
     .text {
-      font-size: 20px;
+      font-size: 24px;
       white-space: normal;
     }
   }  
