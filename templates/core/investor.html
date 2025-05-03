@@ -5,16 +5,54 @@
 {% block content %}
 
 <section class="bg">
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" style="height: 50vh; overflow: hidden;">
+        <div class="carousel-inner h-100">
+          <div class="carousel-item active h-100">
+            <img src="https://images.pexels.com/photos/7414284/pexels-photo-7414284.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                 class="d-block w-100 h-100"
+                 style="object-fit: cover;"
+                 alt="...">
+          </div>
+          <div class="carousel-item h-100">
+            <img src="https://images.pexels.com/photos/7414218/pexels-photo-7414218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                 class="d-block w-100 h-100"
+                 style="object-fit: cover;"
+                 alt="...">
+          </div>
+          <div class="carousel-item h-100">
+            <img src="https://images.pexels.com/photos/7414219/pexels-photo-7414219.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load"
+                 class="d-block w-100 h-100"
+                 style="object-fit: cover;"
+                 alt="...">
+          </div>
+        </div>
+      
+        <button class="carousel-control-prev d-none" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+      
+        <button class="carousel-control-next d-none" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+
+      
+
     <div class="w3-container">
-        <h1 class="w3-center w3-animate-right">Investors Page</h1>
-        <br><br>
-        <p class="w3-center w3-animate-left" style="font-size: 1.2rem; text-align: center;">
-            🚧👷‍♀️ Page Under Construction 👷‍♂️🚧<br>
-            We're building something awesome — stay tuned! 🔧✨
-        </p> 
+        <h2 class="mb-4 text-center">Featured Investors</h2>
     </div>
+
+    
+    
 </section>
 
 <!-- footer -->
 {% include "includes/footer.html" %}
+  
 {% endblock content %}
+
+
+

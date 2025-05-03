@@ -6,27 +6,67 @@
 <section class="bg" style="min-height: 100vh; padding-top: 60px;">
     <!-- Container for main content -->
     <div class="container d-flex flex-column align-items-center">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div class="row g-0">
-                <div class="col-md-4 d-flex align-items-center justify-content-center p-3">
-                    <img src="{{ startup.logo.url }}" alt="{{ startup.name }}"
-                         class="img-fluid rounded" style="max-height: 500px; object-fit: contain;">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h3 class="card-title"><b>{{ startup.name }}</b></h3>
-                        <p class="card-text" style="text-align: justify;">{{ startup.description }}</p>
-                        <p class="card-text"><strong>Sector:</strong> {{ startup.sectors.name }}</p>
-                        <p class="card-text"><strong>Founded:</strong> {{ startup.founding_date }}</p>
-                        <p class="card-text"><strong>Website:</strong> {{ startup.website }}</p>
-                        <p class="card-text"><strong>Location:</strong> {{ startup.location }}</p>
-                        <a href="{% url 'startups' %}" class="btn btn-secondary btn-sm mt-3 mb-5">← Back to Startups</a>
-                    </div>
-                </div>
+        <div class="clearfix">
+            <div class="w3-animate-right">
+                <img src="{{ startup.logo.url }}" 
+                    class="img-fluid w-100 d-block d-md-none mb-3 rounded" 
+                    style="max-height: 300px; cursor: pointer; object-fit: cover;" 
+                    alt="{{ startup.name }}"
+                    data-bs-toggle="modal"
+                    data-bs-target="#logoModal">
+
+                <img src="{{ startup.logo.url }}" 
+                    class="col-md-6 float-md-end mb-3 ms-md-3 rounded d-none d-md-block" 
+                    style="max-height: 500px; cursor: pointer; object-fit: cover;" 
+                    alt="{{ startup.name }}"
+                    data-bs-toggle="modal"
+                    data-bs-target="#logoModal">
+            </div>
+
+            <div class="w3-animate-left">
+                <h3 class="fw-bold"><b>{{ startup.name }}</b></h3>
+            
+                <p style="text-align: justify;">
+                    {{ startup.description }}
+                </p>
+            
+                <p>
+                    <strong>Sector:</strong> {{ startup.sectors.name }}
+                </p>
+            
+                <p>
+                    <strong>Founded:</strong> {{ startup.founding_date }}
+                </p>
+            
+                <p>
+                    <strong>Website:</strong> {{ startup.website }}
+                </p>
+            
+                <p>
+                    <strong>Location:</strong> {{ startup.location }}
+                </p>
+        
+                <a href="{% url 'startups' %}" class="btn btn-secondary btn-sm mt-3 mb-5">← Back to Startups</a>
+
             </div>
         </div>
     </div>
+
+
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="logoModal" tabindex="-1" aria-labelledby="logoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-transparent border-0">
+        <div class="modal-body text-center p-0">
+            <img src="{{ startup.logo.url }}" class="img-fluid rounded" alt="{{ startup.name }}">
+        </div>
+        </div>
+    </div>
+    </div>
 </section>
+
+
 <!-- Footer -->
 {% include "includes/footer.html" %}
 {% endblock %}
+

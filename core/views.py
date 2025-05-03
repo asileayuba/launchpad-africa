@@ -39,10 +39,10 @@ def sector_list_view(request):
     return render(request, "core/sectors.html", context)
 
 def investor(request):
-    investor = Investor.objects.all()
+    investors = Investor.objects.all()
     
     context = {
-        'investor': investor,
+        'investors': investors,
     }
     return render(request, "core/investor.html", context)
 
