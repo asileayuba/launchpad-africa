@@ -31,3 +31,8 @@ document.addEventListener("DOMContentLoaded", function() {
         toggler.innerHTML = '<span class="navbar-toggler-icon"></span>'; // Restore default hamburger
     });
 });
+
+
+// Duplicate the logo slider for seamless infinite scrolling effect
+var copy = document.querySelector(".logos-slide").cloneNode(true);
+document.querySelector(".logos").appendChild(copy);
