@@ -33,9 +33,9 @@ class SectorAdmin(ModelAdmin, ImportExportModelAdmin):
 class StartupAdmin(ModelAdmin, ImportExportModelAdmin):
     import_form_class = ImportForm
     export_form_class = ExportForm
-    list_display = ('name', 'sectors', 'location')
+    list_display = ('name', 'sector', 'location')
     search_fields = ('name',)
-    list_filter = ['sectors']
+    list_filter = ['sector']
     
 class InvestorAdmin(ModelAdmin, ImportExportModelAdmin):
     import_form_class = ImportForm

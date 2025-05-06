@@ -24,7 +24,7 @@ class Startup(models.Model):
     description = models.TextField()
     founding_date = models.DateField()
     logo = CloudinaryField('logo', null=True, blank=True)
-    sectors = models.ForeignKey(Sector, on_delete=models.CASCADE)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     website = models.URLField(null=True, blank=True)
     location = models.CharField(max_length=255, null=True, blank=True)
 
