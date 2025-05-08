@@ -3,10 +3,8 @@ from .models import Sector, Startup, Investor
 from django.db.models import Q
 from django.core.paginator import Paginator
 
-
-
 def home(request):
-    context={
+    context = {
         'is_landing': True,
     }
     return render(request, "core/home.html", context)
@@ -23,7 +21,6 @@ def startup_list_view(request):
         'page_obj': page_obj,
     }
     return render(request, "core/startups.html", context)
-
 
 def sector_list_view(request):
     sectors = Sector.objects.all()
@@ -49,7 +46,6 @@ def investor(request):
 def about(request):
     return render(request, "core/about.html")
 
-
 # Search bar / button
 def search_startups_view(request):
     query = request.GET.get('q')
@@ -59,7 +55,7 @@ def search_startups_view(request):
         all_results = Startup.objects.filter(
             Q(name__icontains=query) |
             Q(description__icontains=query) |
-            Q(sectors__name__icontains=query)
+            Q(sector__name__icontains=query)  # Changed to 'sector'
         ).distinct()
 
         paginator = Paginator(all_results, 6)  # 6 results per page
@@ -78,7 +74,7 @@ def search_startups_view(request):
     return render(request, 'core/startup_search.html', context)
 
 def startup_detail_view(request, sector_slug, startup_slug):
-    startup = get_object_or_404(Startup, slug=startup_slug, sectors__slug=sector_slug)
+    startup = get_object_or_404(Startup, slug=startup_slug, sector__slug=sector_slug)  # Changed to 'sector'
     
     context = {
         'startup': startup,
@@ -88,7 +84,7 @@ def startup_detail_view(request, sector_slug, startup_slug):
 # For list of startups based on their sector
 def startups_by_sector_view(request, sector_slug):
     sector = get_object_or_404(Sector, slug=sector_slug)
-    startups = Startup.objects.filter(sectors=sector)
+    startups = Startup.objects.filter(sector=sector)  # Changed to 'sector'
     paginator = Paginator(startups, 6)
     
     page_number = request.GET.get("page")
