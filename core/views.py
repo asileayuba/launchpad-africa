@@ -37,11 +37,17 @@ def sector_list_view(request):
 
 def investor(request):
     investors = Investor.objects.all()
-    
+
+    paginator = Paginator(investors, 6)  
+    page_number = request.GET.get('page')  
+    page_obj = paginator.get_page(page_number)  
+
     context = {
         'investors': investors,
+        'page_obj': page_obj
     }
     return render(request, "core/investor.html", context)
+
 
 def about(request):
     return render(request, "core/about.html")

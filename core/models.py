@@ -35,6 +35,7 @@ class Startup(models.Model):
 # Investors Model
 class Investor(models.Model):
     name = models.CharField(max_length=255)
+    logo = CloudinaryField('logo', null=True, blank=True)
     email = models.EmailField(unique=True)
     investment_type = models.CharField(max_length=100)
     country = models.CharField(max_length=100, null=True, blank=True)
