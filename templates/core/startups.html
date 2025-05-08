@@ -17,10 +17,17 @@
                         <div class="card-body text-center">
                             <h5 class="card-title mb-2">{{ startup.name }}</h5>
                             <p class="card-text small text-muted mb-2">{{ startup.description|truncatewords:10 }}</p>
-                            <p class="text-muted mb-1"><small><strong>Sector:</strong> {{ startup.sectors.name }}</small></p>
+                            <p class="text-muted mb-1"><small><strong>Sector:</strong> {{ startup.sector.name }}</small></p>
                             <p class="text-muted mb-3"><small><strong>Founded:</strong> {{ startup.founding_date }}</small></p>
 
-                            <a href="{% url 'startup_detail_by_sector' startup.sectors.slug startup.pk %}" class="btn btn-sm btn-outline-primary">View Full Info</a>
+                            {% comment %} <a href="{% url 'startup_detail_by_sector' startup.sectors.slug startup.pk %}" class="btn btn-sm btn-outline-primary">View Full Info</a> {% endcomment %}
+
+                            {% if startup.sector and startup.sector.slug %}
+                            <a href="{% url 'startup_detail_by_sector' startup.sector.slug startup.slug %}" class="btn btn-sm btn-outline-primary">View Full Info</a>
+                            {% else %}
+                                <span>{{ startup.name }} (No sector assigned)</span>
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>

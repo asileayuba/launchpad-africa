@@ -77,8 +77,8 @@ def search_startups_view(request):
     }
     return render(request, 'core/startup_search.html', context)
 
-def startup_detail_view(request, sector_slug, pk):
-    startup = get_object_or_404(Startup, pk=pk, sectors__slug=sector_slug)
+def startup_detail_view(request, sector_slug, startup_slug):
+    startup = get_object_or_404(Startup, slug=startup_slug, sectors__slug=sector_slug)
     
     context = {
         'startup': startup,
