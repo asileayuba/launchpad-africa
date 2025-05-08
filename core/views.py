@@ -55,7 +55,7 @@ def search_startups_view(request):
         all_results = Startup.objects.filter(
             Q(name__icontains=query) |
             Q(description__icontains=query) |
-            Q(sector__name__icontains=query)  # Changed to 'sector'
+            Q(sector__name__icontains=query)  # Updated from sectors__name
         ).distinct()
 
         paginator = Paginator(all_results, 6)  # 6 results per page
@@ -73,8 +73,8 @@ def search_startups_view(request):
     }
     return render(request, 'core/startup_search.html', context)
 
-def startup_detail_view(request, sector_slug, startup_slug):
-    startup = get_object_or_404(Startup, slug=startup_slug, sector__slug=sector_slug)  # Changed to 'sector'
+def startup_detail_view(request, sector_slug, pk):
+    startup = get_object_or_404(Startup, pk=pk, sector__slug=sector_slug)  # Updated from sectors__slug
     
     context = {
         'startup': startup,
@@ -84,7 +84,7 @@ def startup_detail_view(request, sector_slug, startup_slug):
 # For list of startups based on their sector
 def startups_by_sector_view(request, sector_slug):
     sector = get_object_or_404(Sector, slug=sector_slug)
-    startups = Startup.objects.filter(sector=sector)  # Changed to 'sector'
+    startups = Startup.objects.filter(sector=sector)  # Updated from sectors=sector
     paginator = Paginator(startups, 6)
     
     page_number = request.GET.get("page")
