@@ -1,37 +1,83 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block content %}
 
-<section class="bg">
-    <div class="d-flex flex-column min-vh-100">
-       <div class="w3-container">
-            <!-- Other page content goes here -->
-       </div>
-
-        <div class="mt-auto">
-            <h2 class="text-center fw-bold mb-4">Our Partners</h2>
-        <div class="logos">
-            <div class="logos-slide">
-                <img src="{% static 'images/logos/Asile.svg' %}" alt="Partners">
-                <img src="{% static 'images/logos/3m.svg' %}" alt="Partners">
-                <img src="{% static 'images/logos/barstool-store.svg' %}" alt="Partners">
-                <img src="{% static 'images/logos/budweiser.svg' %}" alt="Partners">
-                <img src="{% static 'images/logos/buzzfeed.svg' %}" alt="Partners">
-                <img src="{% static 'images/logos/forbes.svg' %}" alt="Partners">
-                <img src="{% static 'images/logos/macys.svg' %}" alt="Partners">
-                <img src="{% static 'images/logos/menshealth.svg' %}" alt="Partners">
-                <img src="{% static 'images/logos/mrbeast.svg' %}" alt="Partners">
+<section class="bg" >
+    <div class="d-flex justify-content-center align-items-center pt-5" style="min-height: auto;">
+        
+        <div class="row align-items-center">
+            <!-- Carousel Column -->
+            <div class="col-md-6 w3-animate-right">
+                <div id="carouselExampleAutoplaying" class="carousel slide mb-3 rounded overflow-hidden" data-bs-ride="carousel" style="height: 500px;">
+                    <div class="carousel-inner h-100">
+                        <div class="carousel-item active h-100">
+                            <img src="{% static 'images/about/img1.png' %}" class="d-block w-100 h-100" style="object-fit: cover;" alt="Slide 1">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="{% static 'images/about/img2.jpg' %}" class="d-block w-100 h-100" style="object-fit: cover;" alt="Slide 2">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="{% static 'images/about/img1.png' %}" class="d-block w-100 h-100" style="object-fit: cover;" alt="Slide 3">
+                        </div>
+                    </div>
             
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>            
+
+            <!-- Text Column -->
+            <div class="col-md-6 w3-animate-left">
+                <h2 class="text-center fw-bold mb-4">About Us – LaunchPad Africa</h2>
+
+                <p style="text-align: justify;">
+                    LaunchPad Africa is a visionary initiative dedicated to empowering Africa’s next generation of tech innovators, entrepreneurs, and creators. We exist to bridge the gap between ambition and opportunity by providing a dynamic launch platform for African youth to transform their ideas into scalable and impactful ventures.
+                </p>
+                <p style="text-align: justify;">
+                    At LaunchPad Africa, we believe that innovation thrives when knowledge, collaboration, and purpose intersect. Our mission is to foster a thriving ecosystem where aspiring founders, developers, designers, and business minds across the continent are equipped with the tools, mentorship, and community they need to launch meaningful and sustainable startups.
+                </p>
+                <p style="text-align: justify;">
+                    Through curated programs, workshops, hackathons, and accelerator experiences, we enable our members to gain hands-on experience in emerging technologies, digital entrepreneurship, and product development. We prioritize inclusivity and access, ensuring that no dream is too small and no background too humble to be given a chance.
+                </p>
+                <p style="text-align: justify;">
+                    Our platform also connects early-stage ventures with potential partners, investors, and customers, providing visibility and support beyond the ideation stage. Whether you're building a fintech solution in Lagos, an agri-tech tool in Nairobi, or an edtech platform in Accra, LaunchPad Africa is here to help you scale.
+                </p>
+                <p style="text-align: justify;">
+                    <b>We are more than a community – we are a movement.</b> A movement to awaken the untapped genius across Africa, to elevate local solutions for global impact, and to ignite a culture of building, not just consuming.
+                </p>
+                <p style="text-align: justify;">
+                    <b>Join us – let’s launch Africa into the future, one idea at a time.</b>
+                </p>
+
             </div>
         </div>
     </div>
+
+
+        <div class="mt-0">
+            <h2 class="text-center fw-bold mb-4">Our Partners</h2>
+            <div class="logos">
+                <div class="logos-slide">
+                    <img src="{% static 'images/logos/Asile.svg' %}" alt="Partners">
+                    <img src="{% static 'images/logos/3m.svg' %}" alt="Partners">
+                    <img src="{% static 'images/logos/barstool-store.svg' %}" alt="Partners">
+                    <img src="{% static 'images/logos/budweiser.svg' %}" alt="Partners">
+                    <img src="{% static 'images/logos/buzzfeed.svg' %}" alt="Partners">
+                    <img src="{% static 'images/logos/forbes.svg' %}" alt="Partners">
+                    <img src="{% static 'images/logos/macys.svg' %}" alt="Partners">
+                    <img src="{% static 'images/logos/menshealth.svg' %}" alt="Partners">
+                    <img src="{% static 'images/logos/mrbeast.svg' %}" alt="Partners">
+                </div>
+            </div>
+        </div>
     </div>
-
-    
-    
-
 </section>
 
 <!-- footer -->

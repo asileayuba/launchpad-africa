@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     "fontawesomefree",
     "cloudinary_storage",
     "cloudinary",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
@@ -193,4 +194,9 @@ UNFOLD = {
         "light": lambda request: static("images/icon/navbar.png"),  # light mode
         "dark": lambda request: static("images/icon/navbar.png"),  # dark mode
     }
+}
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }

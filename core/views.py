@@ -10,7 +10,7 @@ def home(request):
     return render(request, "core/home.html", context)
 
 def startup_list_view(request):
-    startups = Startup.objects.all()
+    startups = Startup.objects.all().order_by('id')
     paginator = Paginator(startups, 6)
     
     page_number = request.GET.get("page")
@@ -36,7 +36,7 @@ def sector_list_view(request):
     return render(request, "core/sectors.html", context)
 
 def investor(request):
-    investors = Investor.objects.all()
+    investors = Investor.objects.all().order_by('id')
 
     paginator = Paginator(investors, 6)  
     page_number = request.GET.get('page')  

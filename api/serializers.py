@@ -6,4 +6,4 @@ class StartupSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Startup
-        fields = ['name', 'description', 'founding_date', 'website', 'location', 'sector']
+        fields = ['id', 'name', 'description', 'founding_date', 'website', 'location', 'sector']
