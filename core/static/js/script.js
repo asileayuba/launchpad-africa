@@ -1,3 +1,17 @@
+// Auto-Dismiss Django Messages
+document.addEventListener("DOMContentLoaded", function () {
+  const messages = document.querySelectorAll(".message-container .alert");
+
+  messages.forEach(function (msg) {
+    setTimeout(() => {
+      msg.style.transition = "opacity 0.5s ease-out";
+      msg.style.opacity = 0;
+      setTimeout(() => msg.remove(), 500); // Remove from DOM after fade out
+    }, 5000); // 5 seconds
+  });
+});
+
+
 // Automatically collapses the Bootstrap navbar when clicking outside of it on small screens
 document.addEventListener("click", function (event) {
     const navbarCollapse = document.getElementById("navbarSupportedContent");
