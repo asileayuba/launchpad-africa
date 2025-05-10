@@ -476,3 +476,20 @@ color: black !important;
     margin: 0 40px;
 }
 
+
+/* About carousel img */
+.carousel-item img {
+    width: 100%;
+    height: auto; 
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Optional: Adjust for very small screens (like phones in portrait mode) */
+@media (max-width: 576px) {
+    .carousel-item img {
+        object-fit: contain; 
+        height: 400px; 
+    }
+}
+
