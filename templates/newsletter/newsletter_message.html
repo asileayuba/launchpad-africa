@@ -1,7 +1,7 @@
 
 <div class='container'>
     {% if messages %}
-    <div class="message-container">
+    <div class="message-container text-center">
     {% for message in messages %}
         <div class="alert alert-{{ message.tags }}">{{ message }}</div>
     {% endfor %}
