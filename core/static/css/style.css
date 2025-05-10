@@ -487,9 +487,22 @@ color: black !important;
 
 /* Optional: Adjust for very small screens (like phones in portrait mode) */
 @media (max-width: 576px) {
+    .carousel {
+        height: auto !important;
+    }
+
+    .carousel-inner {
+        padding-bottom: 0; 
+    }
+
     .carousel-item img {
         object-fit: contain; 
         height: 400px; 
     }
 }
 
+@media (max-width: 460px) {
+    .carousel-item img {
+        height: auto !important; 
+    }
+}
