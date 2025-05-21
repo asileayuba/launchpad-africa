@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
+from rest_framework_api_key.models import APIKey
 
 
 # Sector Model
@@ -42,3 +43,13 @@ class Investor(models.Model):
     
     def __str__(self):
         return self.name
+    
+    
+class APIKeyMeta(models.Model):
+    api_key = models.OneToOneField(APIKey, on_delete=models.CASCADE, related_name='meta')
+    email = models.EmailField()
+    request_count = models.PositiveIntegerField(default=0)
+    revoked = models.BooleanField(default=False)  # Optional, mirror APIKey revocation if needed
+
+    def __str__(self):
+        return f"{self.email} - {self.api_key.name}"

@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     "core",
     "newsletter",
     "rest_framework",
+    "rest_framework_api_key",
     "import_export",
     "fontawesomefree",
     "cloudinary_storage",
@@ -200,8 +201,37 @@ UNFOLD = {
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework_api_key.permissions.HasAPIKey',
+    ],
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.AnonRateThrottle",
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": "1000/day",
+    },
+    "DEFAULT_FILTER_BACKENDS": [
+        "rest_framework.filters.SearchFilter",
+        "rest_framework.filters.OrderingFilter",
+        "django_filters.rest_framework.DjangoFilterBackend",
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "LaunchPad Africa API",
+    "DESCRIPTION": "API for accessing startup data and managing API keys",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
+
+
+# Ensure Authorization header is preserved
+USE_X_FORWARDED_HOST = True
+
+# If using a reverse proxy (e.g., nginx, gunicorn), you might need:
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 
 

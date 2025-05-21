@@ -102,3 +102,8 @@ def startups_by_sector_view(request, sector_slug):
         'page_obj': page_obj,
     }
     return render(request, 'core/startups_by_sector.html', context)
+
+
+
+def swagger_ui_view(request):
+    return render(request, "swagger_ui.html")
